@@ -7,17 +7,15 @@ import java.sql.SQLException;
 import java.sql.Statement;
 
 /**
-* @author: 张涛一  
-* @E-mail: 2547260515@qq.com
-* @version 创建时间：2018年12月17日 下午12:10:47
-* 类说明
-*/
+ * @author: 张涛一
+ * @E-mail: 2547260515@qq.com
+ * @version 创建时间：2018年12月17日 下午5:26:42 类说明
+ */
+public class Get_Mysql_Data {
 
-public class SQL {
-	
-	public static void main(String[] args) throws SQLException, ClassNotFoundException {
+	public void get_Mysql_Data() throws ClassNotFoundException, SQLException {
+
 		// TODO Auto-generated method stub
-
 		// 加载数据库驱动 com.mysql.jdbc.Driver
 		String driver = "com.mysql.cj.jdbc.Driver";
 
@@ -66,33 +64,34 @@ public class SQL {
 
 			// 获取‘姓名’这列数据
 			sname = rs.getString("sname");
-			// System.out.println(getType(sname));
-			// System.out.println(sname);
-			
+		 //   System.out.println(getType(sname));
+		
 			// 获取‘年龄’这列数据
 			sage = rs.getInt("age");
-			
+
 			// 获取‘性别’这列数据
 			sex = rs.getString("sex");
-						
+
 			// 获取‘班级’这列数据
 			sclass = rs.getString("class");
 
 			// 输出结果
-			System.out.println(sid + "\t" + sname + "\t" + sage + "\t"+ sex + "\t" +sclass );
+			System.out.println(sid + "\t" + sname + "\t" + sage + "\t" + sex + "\t" + sclass);
 		}
 		rs.close();
 		conn.close();
-		
+
 		System.out.println("-------------------------------");
 
 		System.out.println("数据库数据获取成功！");
 
 	}
-
+	
+	
+	
 	// 获取变量类型方法
-	public static String getType(Object o) {
-		return o.getClass().toString(); // 使用int类型的getClass()方法
-	}
+		public static String getType(Object o) {
+			return o.getClass().toString(); // 使用int类型的getClass()方法
+		}
 
 }
