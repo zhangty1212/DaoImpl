@@ -3,17 +3,24 @@ package ZTY;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
+import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
 import java.sql.Statement;
+
+import org.junit.Test;
+
+import com.google.gson.JsonArray;
+import com.google.gson.JsonObject;
 
 /**
  * @author: 张涛一
  * @E-mail: 2547260515@qq.com
- * @version 创建时间：2018年12月17日 下午5:26:42 类说明
+ * @version 创建时间：2018年12月20日 下午5:12:32 类说明
  */
-public class Get_Mysql_Data {
+public class Get_Data_Json {
 
-	public void get_Mysql_Data() throws ClassNotFoundException, SQLException {
+	@Test
+	public void get_Data_Json() throws ClassNotFoundException, SQLException {
 
 		// TODO Auto-generated method stub
 		// 加载数据库驱动 com.mysql.jdbc.Driver
@@ -47,38 +54,41 @@ public class Get_Mysql_Data {
 		// ResultSet类，用来存放获取的结果集！
 		ResultSet rs = statement.executeQuery(sql);
 
-      		
+		// System.out.println(rs);
+
 		System.out.println("-------------------------------");
 		System.out.println("执行结果如下所示:");
 		System.out.println("-------------------------------");
 
-		String sid;
-		String sname;
-		int sage;
-		String sex;
-		String sclass;
+		ResultSetMetaData metaData = rs.getMetaData();
+
+		// System.out.println(metaData);
+
+		int columnCount = metaData.getColumnCount();
+
+		// System.out.println(columnCount);
+
+		JsonArray array = new JsonArray();
 
 		while (rs.next()) {
-			// 获取‘学号’这列数据
-			sid = rs.getString("id");
-			// System.out.println(getType(sid));
 
-			// 获取‘姓名’这列数据
-			sname = rs.getString("sname");
-		 //   System.out.println(getType(sname));
-		
-			// 获取‘年龄’这列数据
-			sage = rs.getInt("age");
+			JsonObject jsonObj = new JsonObject();
 
-			// 获取‘性别’这列数据
-			sex = rs.getString("sex");
+			for (int i = 1; i <= columnCount; i++) {
 
-			// 获取‘班级’这列数据
-			sclass = rs.getString("class");
+				String columnName = metaData.getColumnLabel(i);
+				String value = rs.getString(columnName);
+				// jsonObj.put(columnName, value);
+				jsonObj.addProperty(columnName, value);
+			}
 
-			// 输出结果
-			System.out.println(sid + "\t" + sname + "\t" + sage + "\t" + sex + "\t" + sclass);
+			// array.put(jsonObj);
+			array.add(jsonObj);
+
 		}
+
+		System.out.println("转换JSON数据：");
+		System.out.println(array.toString());
 		rs.close();
 		statement.close();
 		conn.close();
@@ -88,12 +98,5 @@ public class Get_Mysql_Data {
 		System.out.println("数据库数据获取成功！");
 
 	}
-	
-	
-	
-	// 获取变量类型方法
-		public static String getType(Object o) {
-			return o.getClass().toString(); // 使用int类型的getClass()方法
-		}
 
 }
