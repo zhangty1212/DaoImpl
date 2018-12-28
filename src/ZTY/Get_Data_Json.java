@@ -6,9 +6,7 @@ import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
 import java.sql.Statement;
-
 import org.junit.Test;
-
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 
@@ -96,6 +94,8 @@ public class Get_Data_Json {
 		System.out.println("-------------------------------");
 
 		System.out.println("数据库数据获取成功！");
+
+		long a =2147483647;
 
 	}
 
