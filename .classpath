@@ -6,8 +6,10 @@
 		</attributes>
 	</classpathentry>
 	<classpathentry kind="src" path="src"/>
-	<classpathentry kind="lib" path="lib/mysql-connector-java-8.0.12.jar"/>
+	<classpathentry kind="lib" path="lib/mysql-connector-java-8.0.12.jar" sourcepath="lib/mysql-connector-java-8.0.12.jar"/>
 	<classpathentry kind="lib" path="lib/gson-2.3.1.jar" sourcepath="lib/gson-2.3.1.jar"/>
+	<classpathentry kind="lib" path="lib/c3p0-0.9.1.2.jar"/>
+	<classpathentry kind="lib" path="lib/commons-dbutils-1.6.jar"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/4"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
