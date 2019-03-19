@@ -60,21 +60,21 @@ public class Get_Mysql_Data {
 
 		while (rs.next()) {
 			// 获取‘学号’这列数据
-			sid = rs.getString("id");
+			sid = rs.getString("SID");
 			// System.out.println(getType(sid));
 
 			// 获取‘姓名’这列数据
-			sname = rs.getString("sname");
+			sname = rs.getString("Sname");
 		 //   System.out.println(getType(sname));
 		
 			// 获取‘年龄’这列数据
-			sage = rs.getInt("age");
+			sage = rs.getInt("Sage");
 
 			// 获取‘性别’这列数据
-			sex = rs.getString("sex");
+			sex = rs.getString("Sex");
 
 			// 获取‘班级’这列数据
-			sclass = rs.getString("class");
+			sclass = rs.getString("Sclass");
 
 			// 输出结果
 			System.out.println(sid + "\t" + sname + "\t" + sage + "\t" + sex + "\t" + sclass);
